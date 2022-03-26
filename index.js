@@ -1,7 +1,7 @@
 let pokemonesLista = document.getElementById("pokemones-lista");
 let links = document.getElementById("links");
 
-updatePokemons("https://pokeapi.co/api/v2/pokemon");
+updatePokemons("https://pokeapi.co/api/v2/pokemon/charmander");
 function updatePokemons(url) {
   if (url) {
 
@@ -12,7 +12,7 @@ function updatePokemons(url) {
       .then(res => res.json())
       .then(res => {
         // Obtenemos y recorremos a los primeros 20 pokemones obtenidos
-        for (let i of res.results) {
+        //for (let i of res.results) {
 
           // Realizamos otra solicitud Fetch con la URL especifica del pokemon actual recorrido, para obtener datos mas especficos como la imagen
           fetch(i.url)
@@ -24,7 +24,7 @@ function updatePokemons(url) {
                                                   <p>${x.name}</p>
                                               </div>`;
             });
-        };
+       // };
         // Pintamos los enlaces de siguiente o anterior de la paginacion de los pokemones 
         //Boton hacia atrás
         links.innerHTML = (res.previous) ? `<button onclick="updatePokemons('${res.previous}')">Atrás</button>` : "";
